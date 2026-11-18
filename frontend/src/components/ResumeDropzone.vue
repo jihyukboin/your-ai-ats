@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 
+defineProps({ compact: Boolean, disabled: Boolean })
+
 const ACCEPT = '.pdf,application/pdf'
 const MAX_BYTES = 10 * 1024 * 1024
 const emit = defineEmits(['select'])
@@ -51,7 +53,16 @@ defineExpose({ reset, focus })
 </script>
 
 <template>
-  <div class="w-full max-w-[816px] px-[24px] pb-[max(12px,env(safe-area-inset-bottom))] max-[768px]:px-[12px]">
+  <footer v-if="compact" class="shrink-0 border-t border-line px-[8px] pt-[12px] pb-[max(12px,env(safe-area-inset-bottom))]">
+    <input ref="input" hidden type="file" :accept="ACCEPT" @change="onChange" />
+    <button type="button" :disabled="disabled" @click="input.click()"
+      class="min-h-[44px] w-full rounded-full bg-cta px-[20px] text-[15px] font-semibold text-white
+        transition-colors hover:bg-cta-hover active:bg-cta-pressed focus-visible:outline-tint disabled:cursor-wait disabled:opacity-50">
+      재업로드
+    </button>
+    <p v-if="feedback" role="alert" class="mt-2 text-center text-[12px] text-muted">{{ feedback }}</p>
+  </footer>
+  <div v-else class="w-full max-w-[816px] px-[24px] pb-[max(12px,env(safe-area-inset-bottom))] max-[768px]:px-[12px]">
     <label
       class="flex min-h-[220px] cursor-pointer flex-col items-center justify-center gap-[10px] rounded-[28px]
         border-2 border-dashed px-[24px] py-[32px] text-center transition-colors

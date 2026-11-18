@@ -1,5 +1,6 @@
 <script setup>
 import { nextTick, ref } from 'vue'
+import { companyPath } from '../utils/companyPath.js'
 
 const props = defineProps({ initialCompanies: Array, listError: Boolean, activeCompanyId: Number })
 const companies = ref(props.initialCompanies)
@@ -15,9 +16,6 @@ const itemClasses = 'mb-[2px] flex min-h-[40px] w-full items-center gap-[4px] ro
 const actionClasses = 'min-h-[32px] px-[4px] text-[12px] pointer-coarse:min-h-[44px] pointer-coarse:min-w-[44px]'
 const rowActionClasses = 'hover:underline fine-hover:group-[:not(:hover):not(:focus-within)]:opacity-0'
 
-function companyPath(name) {
-  return '/' + encodeURIComponent(name)
-}
 
 async function edit(id, value = '') {
   editing.value = id
@@ -62,7 +60,7 @@ async function change(method, id) {
       companies.value = method === 'POST' ? [company, ...companies.value]
         : companies.value.map(item => item.id === id ? company : item)
       if (method === 'PUT' && id === props.activeCompanyId) {
-        const path = companyPath(company.name)
+        const path = companyPath(company)
         if (path !== window.location.pathname) window.location.replace(path)
       }
     }
@@ -100,7 +98,7 @@ async function change(method, id) {
       <div v-else-if="row.id !== 'new'" :class="itemClasses"
         class="group hover:bg-hover hover:text-ink focus-within:bg-hover focus-within:text-ink
           has-aria-[current=page]:bg-active has-aria-[current=page]:text-ink">
-        <a :href="companyPath(row.name)" :aria-current="row.id === activeCompanyId ? 'page' : undefined"
+        <a :href="companyPath(row)" :aria-current="row.id === activeCompanyId ? 'page' : undefined"
           class="flex min-h-[40px] min-w-0 flex-1 items-center pointer-coarse:min-h-[44px]" :title="row.name">
           <span class="truncate pointer-coarse:py-[8px] pointer-coarse:wrap-anywhere pointer-coarse:whitespace-normal">{{ row.name }}</span>
         </a>

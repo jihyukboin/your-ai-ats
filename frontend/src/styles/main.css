@@ -1,6 +1,12 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard-gov/dist/web/variable/pretendardvariable-gov-dynamic-subset.css");
 @import "tailwindcss";
 
+@property --composer-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 @theme {
   --font-sans: "Pretendard GOV Variable", Pretendard, system-ui, sans-serif;
   --color-bg: #0b0b0d;
@@ -15,6 +21,9 @@
   --color-focus: #e5212e;
   --color-danger: #ff6b74;
   --color-panel: #151518;
+  --color-cta: #0066cc;
+  --color-cta-hover: #0070df;
+  --color-cta-pressed: #005bb5;
   --color-tint: #0a84ff;
   --breakpoint-sidebar: 960px;
   --breakpoint-wide: 1500px;
@@ -23,6 +32,7 @@
   --animate-rise: rise 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
   --animate-pop: pop 0.35s cubic-bezier(0.3, 1.6, 0.5, 1) both;
   --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-greet: greet 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 
   @keyframes scan {
     from { transform: translateY(-56px); }
@@ -33,6 +43,11 @@
   }
   @keyframes pop {
     from { transform: scale(0.4); opacity: 0; }
+  }
+  @keyframes greet {
+    0% { opacity: 0; filter: blur(10px); transform: translateY(14px); background-position: 100% 0; }
+    40% { opacity: 1; filter: blur(0); transform: none; }
+    100% { background-position: 0 0; }
   }
   @keyframes shimmer {
     from { background-position: 100% 0; }
@@ -76,8 +91,46 @@
     @apply h-auto py-[8px] leading-[1.5];
   }
 
+  /* 입력창 포커스 시 회전하는 그라데이션 테두리와 은은한 글로우 */
+  .composer-glow {
+    @apply relative transition-[border-color,box-shadow] duration-300 focus-within:border-transparent data-typing:border-transparent;
+  }
+
+  .composer-glow::before,
+  .composer-glow::after {
+    @apply pointer-events-none absolute -inset-px -z-1 rounded-[inherit] opacity-0 transition-opacity duration-500;
+    content: "";
+    background: conic-gradient(from var(--composer-angle), var(--color-tint), #a78bfa, #f472b6, var(--color-focus), var(--color-tint));
+    animation: composer-spin 5s linear infinite paused;
+  }
+
+  .composer-glow::after {
+    filter: blur(22px);
+  }
+
+  .composer-glow:is(:focus-within, [data-typing])::before {
+    @apply opacity-100;
+    animation-play-state: running;
+  }
+
+  .composer-glow:is(:focus-within, [data-typing])::after {
+    @apply opacity-30;
+    animation-play-state: running;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .composer-glow::before,
+    .composer-glow::after {
+      animation: none;
+    }
+  }
+
   .skeleton-line {
     @apply bg-[linear-gradient(90deg,rgb(255_255_255/0.06)_25%,rgb(255_255_255/0.16)_50%,rgb(255_255_255/0.06)_75%)]
       bg-size-[200%_100%] motion-safe:animate-shimmer;
   }
+}
+
+@keyframes composer-spin {
+  to { --composer-angle: 360deg; }
 }

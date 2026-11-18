@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises'
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
+import { companyPath } from './src/utils/companyPath.js'
 
 const backend = 'http://127.0.0.1:8000'
 
@@ -28,9 +29,34 @@ function pageMiddleware(loadTemplate, loadRenderer) {
       } catch {
         props = { companies: [], listError: true }
       }
-      const activeCompany = props.companies.find(company => company.name === companyName)
-      if (!activeCompany && !props.listError && path !== '/' && path !== '/index.html') return next()
+      const home = path === '/' || path === '/index.html'
+      let activeCompany
+      if (!home && !props.listError) {
+        const id = companyName.match(/-(\d+)$/)?.[1]
+        const byId = props.companies.find(company => String(company.id) === id)
+        if (byId && companyName === `${byId.name}-${byId.id}`) {
+          activeCompany = byId
+        } else {
+          const legacy = props.companies.filter(company => company.name === companyName)
+          const target = legacy.length === 1 ? legacy[0] : byId
+          if (!target) return next()
+          response.writeHead(302, { Location: companyPath(target) + request.url.slice(path.length) })
+          return response.end()
+        }
+      }
       props.activeCompanyId = activeCompany?.id ?? null
+
+      try {
+        const result = await fetch(backend + '/api/resumes/latest', { signal: AbortSignal.timeout(4000) })
+        if (!result.ok) throw new Error('Resume unavailable')
+        const resume = await result.json()
+        if (resume) {
+          props.userProfile = { name: resume.name, avatar: resume.avatar }
+          if (path === '/' || path === '/index.html') props.savedResume = resume
+        }
+      } catch {
+        props.resumeError = true
+      }
 
       const [template, { render }] = await Promise.all([loadTemplate(path), loadRenderer()])
       const state = JSON.stringify(props).replaceAll('<', '\\u003c')

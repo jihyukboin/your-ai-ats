@@ -10,6 +10,10 @@ def initialize_database() -> None:
     with closing(sqlite3.connect(DATABASE_PATH)) as connection:
         connection.execute("PRAGMA journal_mode = WAL").fetchone()
         connection.execute("CREATE TABLE IF NOT EXISTS companies (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL)")
+        connection.execute("CREATE TABLE IF NOT EXISTS resumes (id TEXT PRIMARY KEY, document TEXT NOT NULL)")
+        connection.execute("CREATE TABLE IF NOT EXISTS company_analyses (id TEXT PRIMARY KEY, company_id INTEGER NOT NULL, data TEXT NOT NULL)")
+        connection.execute("CREATE TABLE IF NOT EXISTS resume_fits (id TEXT PRIMARY KEY, company_id INTEGER NOT NULL, data TEXT NOT NULL)")
+        connection.execute("CREATE TABLE IF NOT EXISTS cover_letters (id TEXT PRIMARY KEY, company_id INTEGER NOT NULL, data TEXT NOT NULL)")
 
 
 def check_database() -> None:

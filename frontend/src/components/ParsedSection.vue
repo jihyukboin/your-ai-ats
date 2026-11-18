@@ -36,8 +36,7 @@ function save() {
 }
 
 function addItem() {
-  const base = section.value.items[0] ?? {}
-  draft.value.items.push({ title: '', meta: '', ...('sub' in base && { sub: '' }), ...(base.bullets && { bullets: [] }) })
+  draft.value.items.push({ title: '', meta: '', sub: '', bullets: [] })
   nextTick(() => panel.value.querySelector('li:last-of-type input')?.focus())
 }
 
