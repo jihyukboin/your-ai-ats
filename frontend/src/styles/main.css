@@ -1,0 +1,47 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard-gov/dist/web/variable/pretendardvariable-gov-dynamic-subset.css");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Pretendard GOV Variable", Pretendard, system-ui, sans-serif;
+  --color-bg: #0b0b0d;
+  --color-sidebar: #111114;
+  --color-ink: #ededf0;
+  --color-muted: #8b8b94;
+  --color-subtle: #5d5d66;
+  --color-line: rgb(255 255 255 / 0.07);
+  --color-line-strong: rgb(255 255 255 / 0.12);
+  --color-hover: rgb(255 255 255 / 0.045);
+  --color-active: rgb(255 255 255 / 0.08);
+  --color-focus: #e5212e;
+  --color-danger: #ff6b74;
+  --breakpoint-sidebar: 960px;
+  --breakpoint-wide: 1500px;
+}
+
+@custom-variant short (@media (max-height: 500px));
+@custom-variant fine-hover (@media (hover: hover) and (pointer: fine));
+
+@layer base {
+  html {
+    @apply bg-bg text-ink;
+    color-scheme: dark;
+    font-size: 14px;
+    font-synthesis: none;
+    line-height: normal;
+  }
+
+  * {
+    scrollbar-color: rgb(255 255 255 / 0.12) transparent;
+  }
+
+  button {
+    @apply cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus;
+  }
+}
+
+@layer components {
+  .icon-button {
+    @apply grid size-[36px] basis-[36px] shrink-0 place-items-center rounded-[9px]
+      hover:bg-hover pointer-coarse:size-[44px] pointer-coarse:basis-[44px];
+  }
+}

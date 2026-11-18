@@ -1,4 +1,5 @@
-import { createApp } from 'vue'
+import { createSSRApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const state = document.getElementById('initial-state')
+createSSRApp(App, state ? JSON.parse(state.textContent) : {}).mount('#app')

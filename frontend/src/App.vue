@@ -1,69 +1,71 @@
 <script setup>
 import { onMounted, ref } from 'vue'
+import CompanyPanel from './components/CompanyPanel.vue'
+import ResumeDropzone from './components/ResumeDropzone.vue'
+import UserBadge from './components/UserBadge.vue'
 
-const message = ref('')
-const pending = ref(true)
+const props = defineProps({
+  companies: { type: Array, default: () => [] },
+  listError: Boolean,
+  activeCompanyId: { type: Number, default: null },
+})
 
-async function checkConnection() {
-  pending.value = true
-  message.value = '연결 확인 중…'
+const dropzone = ref(null)
 
-  try {
-    const response = await fetch('/api/health', { cache: 'no-store' })
-    if (!response.ok) throw new Error('Health check failed')
-    const health = await response.json()
-    if (health.status !== 'ok' || health.database !== 'sqlite') {
-      throw new Error('Unexpected health response')
-    }
-    message.value = 'FastAPI와 SQLite에 연결되었습니다.'
-  } catch {
-    message.value = '연결에 실패했습니다. 백엔드 실행 상태를 확인해 주세요.'
-  } finally {
-    pending.value = false
+function resetHome() {
+  if (props.activeCompanyId !== null) {
+    window.location.assign('/')
+    return
   }
+  dropzone.value.reset()
 }
 
-onMounted(checkConnection)
+onMounted(() => {
+  if (!window.matchMedia('(width < 960px)').matches) dropzone.value.focus()
+})
 </script>
 
 <template>
-  <main>
-    <h1>AI 코어 플래너</h1>
-    <p role="status">{{ message }}</p>
-    <button type="button" :disabled="pending" @click="checkConnection">연결 다시 확인</button>
-  </main>
+  <div class="flex h-dvh min-h-0">
+    <aside
+      class="flex min-w-0 flex-[0_0_280px] flex-col overflow-hidden border-r border-line bg-sidebar px-[8px] max-sidebar:basis-[240px]"
+      aria-label="사이드바"
+    >
+      <div class="-mx-[8px] flex flex-[0_0_64px] items-center border-b border-line px-[12px]">
+        <button
+          class="flex h-[40px] items-center gap-[8px] rounded-[9px] pr-[10px] hover:bg-hover
+            pointer-coarse:h-[44px]"
+          type="button"
+          aria-label="Your ATS 홈"
+          @click="resetHome"
+        >
+          <img src="/your-ats.svg" width="36" height="36" alt="" />
+          <span class="text-[17px] font-semibold tracking-[-0.3px] whitespace-nowrap">Your ATS</span>
+        </button>
+      </div>
+      <CompanyPanel :initial-companies="companies" :list-error="listError" :active-company-id="activeCompanyId" />
+    </aside>
+
+    <main class="relative flex min-w-0 flex-1 flex-col">
+      <header
+        class="absolute inset-x-0 top-0 z-1 flex h-[64px] items-center justify-center bg-bg/35 backdrop-blur-[1px]"
+      >
+        <UserBadge name="사용자" avatar="/avatar.webp" />
+      </header>
+      <div class="flex min-h-0 flex-1 flex-col items-center overflow-y-auto pt-[64px] scrollbar-thin">
+        <section
+          class="flex min-h-[110px] w-full shrink-0 basis-[calc(42%_-_25px)] flex-col
+            items-center justify-end px-[24px] pb-[30px] text-center
+            max-sidebar:basis-[38%] max-sidebar:pb-[24px] wide:basis-[calc(44%_-_25px)]
+            short:min-h-0 short:basis-auto short:py-[clamp(8px,4dvh,20px)]"
+          aria-labelledby="greeting"
+        >
+          <h1 id="greeting" class="text-[28px]/[1.5] font-[550] tracking-[-0.8px] max-sidebar:text-[25px]">
+            이력서를 올려주세요
+          </h1>
+        </section>
+        <ResumeDropzone ref="dropzone" />
+      </div>
+    </main>
+  </div>
 </template>
-
-<style>
-:root {
-  font-family: system-ui, sans-serif;
-  color: #162b24;
-  background: #f4f7f5;
-  line-height: 1.55;
-}
-
-main {
-  max-width: 34rem;
-  margin: clamp(2rem, 12vh, 8rem) auto;
-  padding: 1.5rem;
-}
-
-h1 {
-  margin: 0;
-}
-
-button {
-  padding: 0.55rem 1rem;
-  border: 1px solid #305e4d;
-  border-radius: 0.4rem;
-  background: #fff;
-  color: #234638;
-  font: inherit;
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: wait;
-  opacity: 0.65;
-}
-</style>

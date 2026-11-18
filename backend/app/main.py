@@ -5,6 +5,7 @@ from typing import Literal
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
+from .companies import router as companies_router
 from .database import check_database, initialize_database
 
 
@@ -20,6 +21,7 @@ async def lifespan(_app: FastAPI):
 
 
 app = FastAPI(title="AI Core Planner API", lifespan=lifespan)
+app.include_router(companies_router)
 
 
 @app.get("/api/health")

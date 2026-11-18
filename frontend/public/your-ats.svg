@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="243 253 768 768">
+  <defs>
+    <linearGradient id="scan" x1="340" x2="913" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#399ff6"/>
+      <stop offset=".44" stop-color="#28cef3"/>
+      <stop offset="1" stop-color="#2584f5"/>
+    </linearGradient>
+    <filter id="glow" x="-10%" y="-300%" width="120%" height="700%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+  </defs>
+
+  <path d="M306 451v-58a65 65 0 0 1 65-65h59m394 0h59a65 65 0 0 1 65 65v58m0 371v59a65 65 0 0 1-65 65h-59m-394 0h-59a65 65 0 0 1-65-65v-59"
+    fill="none" stroke="#286bd7" stroke-width="40" stroke-linecap="round"/>
+
+  <path d="M482 401h225l127 124v290a62 62 0 0 1-62 62H482a62 62 0 0 1-62-62V463a62 62 0 0 1 62-62Z"
+    fill="none" stroke="#1b3552" stroke-width="37" stroke-linejoin="round"/>
+  <path d="m705 401 129 127h-70a59 59 0 0 1-59-59Z" fill="#1b3552"/>
+  <path d="M512 546h169m-169 76h230m-230 163h230"
+    fill="none" stroke="#bec9d4" stroke-width="37" stroke-linecap="round"/>
+
+  <path d="M381 707h492" fill="none" stroke="url(#scan)" stroke-width="57" stroke-linecap="round"
+    opacity=".58" filter="url(#glow)"/>
+  <path d="M357 699h540" fill="none" stroke="url(#scan)" stroke-width="34" stroke-linecap="round"/>
+</svg>

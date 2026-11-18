@@ -1,13 +1,66 @@
+import { readFile } from 'node:fs/promises'
+import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 
+const backend = 'http://127.0.0.1:8000'
+
+function pageMiddleware(loadTemplate, loadRenderer) {
+  return async (request, response, next) => {
+    const path = request.url?.split('?')[0]
+    const accept = request.headers.accept ?? '*/*'
+    if (request.method !== 'GET' || !/^\/[^/]*$/.test(path ?? '') ||
+        (!accept.includes('text/html') && accept !== '*/*')) return next()
+
+    let companyName
+    try {
+      companyName = decodeURIComponent(path.slice(1))
+    } catch {
+      return next()
+    }
+
+    try {
+      let props
+      try {
+        const result = await fetch(backend + '/api/companies', { signal: AbortSignal.timeout(4000) })
+        if (!result.ok) throw new Error('Company list unavailable')
+        props = { companies: await result.json() }
+      } catch {
+        props = { companies: [], listError: true }
+      }
+      const activeCompany = props.companies.find(company => company.name === companyName)
+      if (!activeCompany && !props.listError && path !== '/' && path !== '/index.html') return next()
+      props.activeCompanyId = activeCompany?.id ?? null
+
+      const [template, { render }] = await Promise.all([loadTemplate(path), loadRenderer()])
+      const state = JSON.stringify(props).replaceAll('<', '\\u003c')
+      const markup = await render(props)
+      response.setHeader('Cache-Control', 'no-store')
+      response.setHeader('Content-Type', 'text/html; charset=utf-8')
+      response.end(template.replace('<!--ssr-outlet-->', () => markup)
+        .replace('</body>', () => `<script id="initial-state" type="application/json">${state}</script></body>`))
+    } catch (error) {
+      next(error)
+    }
+  }
+}
+
 export default defineConfig({
-  plugins: [vue()],
-  server: {
-    host: '127.0.0.1',
-    port: 5173,
-    proxy: {
-      '/api': 'http://127.0.0.1:8000',
+  plugins: [vue(), tailwindcss(), {
+    name: 'render-page',
+    configureServer(server) {
+      server.middlewares.use(pageMiddleware(
+        async path => server.transformIndexHtml(path, await readFile('index.html', 'utf8')),
+        () => server.environments.ssr.runner.import('/src/entry-server.js')
+      ))
     },
-  },
+    configurePreviewServer(server) {
+      server.middlewares.use(pageMiddleware(
+        () => readFile('dist/client/index.html', 'utf8'),
+        () => import(/* @vite-ignore */ new URL('./dist/server/entry-server.js', import.meta.url).href)
+      ))
+    }
+  }],
+  build: { outDir: 'dist/client' },
+  server: { host: '127.0.0.1', port: 5173, proxy: { '/api': backend } },
 })
