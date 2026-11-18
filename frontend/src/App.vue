@@ -1,7 +1,8 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 import CompanyPanel from './components/CompanyPanel.vue'
 import ResumeDropzone from './components/ResumeDropzone.vue'
+import ResumeParser from './components/ResumeParser.vue'
 import UserBadge from './components/UserBadge.vue'
 
 const props = defineProps({
@@ -11,12 +12,15 @@ const props = defineProps({
 })
 
 const dropzone = ref(null)
+const resume = ref(null)
 
-function resetHome() {
+async function resetHome() {
   if (props.activeCompanyId !== null) {
     window.location.assign('/')
     return
   }
+  resume.value = null
+  await nextTick()
   dropzone.value.reset()
 }
 
@@ -53,7 +57,9 @@ onMounted(() => {
         <UserBadge name="사용자" avatar="/avatar.webp" />
       </header>
       <div class="flex min-h-0 flex-1 flex-col items-center overflow-y-auto pt-[64px] scrollbar-thin">
+        <ResumeParser v-if="resume" />
         <section
+          v-else
           class="flex min-h-[110px] w-full shrink-0 basis-[calc(42%_-_25px)] flex-col
             items-center justify-end px-[24px] pb-[30px] text-center
             max-sidebar:basis-[38%] max-sidebar:pb-[24px] wide:basis-[calc(44%_-_25px)]
@@ -64,7 +70,7 @@ onMounted(() => {
             이력서를 올려주세요
           </h1>
         </section>
-        <ResumeDropzone ref="dropzone" />
+        <ResumeDropzone v-if="!resume" ref="dropzone" @select="resume = $event" />
       </div>
     </main>
   </div>
