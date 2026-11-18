@@ -1,5 +1,6 @@
 <script setup>
 import { computed, nextTick, onMounted, ref } from 'vue'
+import PlannerWorkspace from './components/planner/PlannerWorkspace.vue'
 import CompanyChat from './components/CompanyChat.vue'
 import CompanyPanel from './components/CompanyPanel.vue'
 import CompanyStepper from './components/CompanyStepper.vue'
@@ -8,6 +9,7 @@ import ResumeParser from './components/ResumeParser.vue'
 import UserBadge from './components/UserBadge.vue'
 
 const props = defineProps({
+  plannerPage: Boolean,
   companies: { type: Array, default: () => [] },
   listError: Boolean,
   savedResume: Object,
@@ -62,7 +64,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex h-dvh min-h-0">
+  <PlannerWorkspace v-if="plannerPage" />
+  <div v-else class="flex h-dvh min-h-0">
     <aside
       class="flex min-w-0 flex-[0_0_280px] flex-col overflow-hidden border-r border-line bg-sidebar px-[8px] max-sidebar:basis-[240px]"
       aria-label="사이드바"
@@ -78,6 +81,7 @@ onMounted(() => {
           <span class="text-[17px] font-semibold tracking-[-0.3px] whitespace-nowrap">Your ATS</span>
         </a>
       </div>
+      <a href="/workspace/planner" class="mx-1 mt-3 rounded-lg px-2 py-3 text-sm font-semibold text-tint hover:bg-hover">포트폴리오 준비 플래너 ↗</a>
       <CompanyPanel :initial-companies="companies" :list-error="listError" :active-company-id="activeCompanyId" />
       <ResumeDropzone compact :disabled="busy" @select="startUpload($event, true)" />
     </aside>

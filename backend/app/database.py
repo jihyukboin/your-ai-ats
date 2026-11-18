@@ -6,9 +6,12 @@ DATABASE_PATH = Path(__file__).resolve().parents[2] / "infra" / "data" / "planne
 
 
 def initialize_database() -> None:
+    from . import planner_store
+
     DATABASE_PATH.parent.mkdir(parents=True, exist_ok=True)
     with closing(sqlite3.connect(DATABASE_PATH)) as connection:
         connection.execute("PRAGMA journal_mode = WAL").fetchone()
+        planner_store.initialize(connection)
         connection.execute("CREATE TABLE IF NOT EXISTS companies (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL)")
         connection.execute("CREATE TABLE IF NOT EXISTS resumes (id TEXT PRIMARY KEY, document TEXT NOT NULL)")
         connection.execute("CREATE TABLE IF NOT EXISTS company_analyses (id TEXT PRIMARY KEY, company_id INTEGER NOT NULL, data TEXT NOT NULL)")

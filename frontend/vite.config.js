@@ -4,13 +4,14 @@ import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import { companyPath } from './src/utils/companyPath.js'
 
-const backend = 'http://127.0.0.1:8000'
+const backend = process.env.PLANNER_BACKEND_URL || 'http://127.0.0.1:8000'
 
 function pageMiddleware(loadTemplate, loadRenderer) {
   return async (request, response, next) => {
     const path = request.url?.split('?')[0]
     const accept = request.headers.accept ?? '*/*'
-    if (request.method !== 'GET' || !/^\/[^/]*$/.test(path ?? '') ||
+    const plannerPage = path === '/workspace/planner'
+    if (request.method !== 'GET' || (!plannerPage && !/^\/[^/]*$/.test(path ?? '')) ||
         (!accept.includes('text/html') && accept !== '*/*')) return next()
 
     let companyName
@@ -21,43 +22,44 @@ function pageMiddleware(loadTemplate, loadRenderer) {
     }
 
     try {
-      let props
-      try {
-        const result = await fetch(backend + '/api/companies', { signal: AbortSignal.timeout(4000) })
-        if (!result.ok) throw new Error('Company list unavailable')
-        props = { companies: await result.json() }
-      } catch {
-        props = { companies: [], listError: true }
-      }
-      const home = path === '/' || path === '/index.html'
-      let activeCompany
-      if (!home && !props.listError) {
-        const id = companyName.match(/-(\d+)$/)?.[1]
-        const byId = props.companies.find(company => String(company.id) === id)
-        if (byId && companyName === `${byId.name}-${byId.id}`) {
-          activeCompany = byId
-        } else {
-          const legacy = props.companies.filter(company => company.name === companyName)
-          const target = legacy.length === 1 ? legacy[0] : byId
-          if (!target) return next()
-          response.writeHead(302, { Location: companyPath(target) + request.url.slice(path.length) })
-          return response.end()
+      let props = { plannerPage }
+      if (!plannerPage) {
+        try {
+          const result = await fetch(backend + '/api/companies', { signal: AbortSignal.timeout(4000) })
+          if (!result.ok) throw new Error('Company list unavailable')
+          props = { companies: await result.json() }
+        } catch {
+          props = { companies: [], listError: true }
+        }
+        const home = path === '/' || path === '/index.html'
+        let activeCompany
+        if (!home && !props.listError) {
+          const id = companyName.match(/-(\d+)$/)?.[1]
+          const byId = props.companies.find(company => String(company.id) === id)
+          if (byId && companyName === `${byId.name}-${byId.id}`) {
+            activeCompany = byId
+          } else {
+            const legacy = props.companies.filter(company => company.name === companyName)
+            const target = legacy.length === 1 ? legacy[0] : byId
+            if (!target) return next()
+            response.writeHead(302, { Location: companyPath(target) + request.url.slice(path.length) })
+            return response.end()
+          }
+        }
+        props.activeCompanyId = activeCompany?.id ?? null
+
+        try {
+          const result = await fetch(backend + '/api/resumes/latest', { signal: AbortSignal.timeout(4000) })
+          if (!result.ok) throw new Error('Resume unavailable')
+          const resume = await result.json()
+          if (resume) {
+            props.userProfile = { name: resume.name, avatar: resume.avatar }
+            if (path === '/' || path === '/index.html') props.savedResume = resume
+          }
+        } catch {
+          props.resumeError = true
         }
       }
-      props.activeCompanyId = activeCompany?.id ?? null
-
-      try {
-        const result = await fetch(backend + '/api/resumes/latest', { signal: AbortSignal.timeout(4000) })
-        if (!result.ok) throw new Error('Resume unavailable')
-        const resume = await result.json()
-        if (resume) {
-          props.userProfile = { name: resume.name, avatar: resume.avatar }
-          if (path === '/' || path === '/index.html') props.savedResume = resume
-        }
-      } catch {
-        props.resumeError = true
-      }
-
       const [template, { render }] = await Promise.all([loadTemplate(path), loadRenderer()])
       const state = JSON.stringify(props).replaceAll('<', '\\u003c')
       const markup = await render(props)
@@ -87,6 +89,7 @@ export default defineConfig({
       ))
     }
   }],
+  preview: { proxy: { '/api': backend } },
   build: { outDir: 'dist/client' },
   server: { host: '127.0.0.1', port: 5173, proxy: { '/api': backend } },
 })

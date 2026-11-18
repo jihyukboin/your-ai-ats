@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-11-18T07:35:10.495456+00:00",
+  "model": "gpt-4.1",
+  "endpoint": "Responses API",
+  "input": "I'm learning a programming language and would love a few well-known community discussions to read.",
+  "previous_conditions": {
+    "language": "Python"
+  },
+  "registered_entry_tools": [
+    "search_candidates",
+    "search_resources"
+  ],
+  "selected_tool": "search_resources",
+  "arguments": {
+    "language": "Python"
+  },
+  "selection_reason": "학습 중인 Python 언어에 대한 커뮤니티 주요 토론 참고자료를 제공하기 위해 Stack Overflow에서 인기 있는 질문을 추천합니다."
+}

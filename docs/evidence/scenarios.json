@@ -1,0 +1,178 @@
+[
+  {
+    "case": "first",
+    "mode": "captured_tools",
+    "message": "2026-11-18 14:00부터 15:00까지 Python 이슈 읽기 계획을 짜줘",
+    "status": "recommended",
+    "replans": 0,
+    "tools": [
+      "search_candidates",
+      "candidate_detail",
+      "candidate_detail",
+      "search_resources"
+    ],
+    "elapsed_ms": 21,
+    "answer": "2026-11-18 14:00~14:13에 Add a documentation post for dimensionality-reduction tools (goldener-data/goldener#445) 본문 검토를 추천합니다.\n조회한 페이지에서 가용 60분 안에 검토할 수 있는 후보 중 예상 시간이 가장 짧습니다.\n본문 2115자 ÷ 분당 300자(올림) + 메모 5분 = 예상 13분. 마감 15:00 기준 늦어도 14:47 시작.\n예상 시간에는 댓글 읽기와 코드 수정이 포함되지 않습니다.\n언어 참고 자료 · What does the \"yield\" keyword do in Python? (Alex. S., CC BY-SA 4.0)\n언어 참고 자료 · What does if __name__ == \"__main__\": do? (Devoted, CC BY-SA 4.0)",
+    "stages": [
+      "analyze",
+      "plan",
+      "execute",
+      "judge",
+      "respond"
+    ]
+  },
+  {
+    "case": "followup",
+    "mode": "captured_tools",
+    "message": "같은 조건에서 종료만 14시 10분으로 바꿔줘",
+    "status": "recommended",
+    "replans": 1,
+    "tools": [
+      "search_candidates",
+      "candidate_detail",
+      "candidate_detail",
+      "search_resources",
+      "search_candidates",
+      "candidate_detail",
+      "candidate_detail"
+    ],
+    "elapsed_ms": 23,
+    "answer": "2026-11-18 14:00~14:07에 In `GoldSelector`, `value` should never be None (goldener-data/goldener#443) 본문 검토를 추천합니다.\n조회한 페이지에서 가용 10분 안에 검토할 수 있는 후보 중 예상 시간이 가장 짧습니다.\n본문 578자 ÷ 분당 300자(올림) + 메모 5분 = 예상 7분. 마감 14:10 기준 늦어도 14:03 시작.\n예상 시간에는 댓글 읽기와 코드 수정이 포함되지 않습니다.\n언어 참고 자료 · What does the \"yield\" keyword do in Python? (Alex. S., CC BY-SA 4.0)\n언어 참고 자료 · What does if __name__ == \"__main__\": do? (Devoted, CC BY-SA 4.0)\n제외 · saayam-for-all/ai#257 · 검토 16분 예상, 가용 10분 초과\n제외 · goldener-data/goldener#445 · 검토 13분 예상, 가용 10분 초과\n제외 · goldener-data/goldener#444 · 검토 11분 예상, 가용 10분 초과",
+    "stages": [
+      "analyze",
+      "plan",
+      "execute",
+      "judge",
+      "plan",
+      "execute",
+      "judge",
+      "respond"
+    ]
+  },
+  {
+    "case": "replan",
+    "mode": "captured_tools",
+    "message": "2026-11-18 14:00부터 14:10까지 Python 이슈 읽기 계획을 짜줘",
+    "status": "recommended",
+    "replans": 1,
+    "tools": [
+      "search_candidates",
+      "candidate_detail",
+      "candidate_detail",
+      "search_resources",
+      "search_candidates",
+      "candidate_detail",
+      "candidate_detail"
+    ],
+    "elapsed_ms": 17,
+    "answer": "2026-11-18 14:00~14:07에 In `GoldSelector`, `value` should never be None (goldener-data/goldener#443) 본문 검토를 추천합니다.\n조회한 페이지에서 가용 10분 안에 검토할 수 있는 후보 중 예상 시간이 가장 짧습니다.\n본문 578자 ÷ 분당 300자(올림) + 메모 5분 = 예상 7분. 마감 14:10 기준 늦어도 14:03 시작.\n예상 시간에는 댓글 읽기와 코드 수정이 포함되지 않습니다.\n언어 참고 자료 · What does the \"yield\" keyword do in Python? (Alex. S., CC BY-SA 4.0)\n언어 참고 자료 · What does if __name__ == \"__main__\": do? (Devoted, CC BY-SA 4.0)\n제외 · saayam-for-all/ai#257 · 검토 16분 예상, 가용 10분 초과\n제외 · goldener-data/goldener#445 · 검토 13분 예상, 가용 10분 초과\n제외 · goldener-data/goldener#444 · 검토 11분 예상, 가용 10분 초과",
+    "stages": [
+      "analyze",
+      "plan",
+      "execute",
+      "judge",
+      "plan",
+      "execute",
+      "judge",
+      "respond"
+    ]
+  },
+  {
+    "case": "cap",
+    "mode": "captured_tools",
+    "message": "2026-11-18 14:00부터 14:02까지 Python 이슈 읽기 계획을 짜줘",
+    "status": "no_match",
+    "replans": 2,
+    "tools": [
+      "search_candidates",
+      "candidate_detail",
+      "candidate_detail",
+      "search_resources",
+      "search_candidates",
+      "candidate_detail",
+      "candidate_detail",
+      "search_candidates",
+      "candidate_detail",
+      "candidate_detail"
+    ],
+    "elapsed_ms": 21,
+    "answer": "재계획 상한 2회에 도달했습니다. 검토 시간을 늘리거나 언어를 변경해 주세요.\n언어 참고 자료 · What does the \"yield\" keyword do in Python? (Alex. S., CC BY-SA 4.0)\n언어 참고 자료 · What does if __name__ == \"__main__\": do? (Devoted, CC BY-SA 4.0)\n제외 · saayam-for-all/ai#257 · 검토 16분 예상, 가용 2분 초과\n제외 · goldener-data/goldener#445 · 검토 13분 예상, 가용 2분 초과\n제외 · goldener-data/goldener#444 · 검토 11분 예상, 가용 2분 초과\n제외 · goldener-data/goldener#443 · 검토 7분 예상, 가용 2분 초과\n제외 · swarmauri/swarmauri-sdk#6308 · 검토 19분 예상, 가용 2분 초과\n제외 · elviskahoro/sdk-python-attio#176 · 검토 7분 예상, 가용 2분 초과",
+    "stages": [
+      "analyze",
+      "plan",
+      "execute",
+      "judge",
+      "plan",
+      "execute",
+      "judge",
+      "plan",
+      "execute",
+      "judge",
+      "respond"
+    ]
+  },
+  {
+    "case": "partial",
+    "mode": "captured_tools",
+    "message": "2026-11-18 14:00부터 15:00까지 Python 이슈 읽기 계획을 짜줘. 참고자료도 알려줘",
+    "status": "recommended",
+    "replans": 0,
+    "tools": [
+      "search_candidates",
+      "candidate_detail",
+      "candidate_detail",
+      "search_resources"
+    ],
+    "elapsed_ms": 12,
+    "answer": "2026-11-18 14:00~14:13에 Add a documentation post for dimensionality-reduction tools (goldener-data/goldener#445) 본문 검토를 추천합니다.\n조회한 페이지에서 가용 60분 안에 검토할 수 있는 후보 중 예상 시간이 가장 짧습니다.\n본문 2115자 ÷ 분당 300자(올림) + 메모 5분 = 예상 13분. 마감 15:00 기준 늦어도 14:47 시작.\n예상 시간에는 댓글 읽기와 코드 수정이 포함되지 않습니다.\nsearch_resources · UNAVAILABLE · 제공기관에 연결할 수 없습니다. 잠시 후 다시 시도하세요.",
+    "stages": [
+      "analyze",
+      "plan",
+      "execute",
+      "judge",
+      "respond"
+    ]
+  },
+  {
+    "case": "help",
+    "mode": "captured_tools",
+    "message": "사용법을 알려줘",
+    "status": "help",
+    "replans": 0,
+    "tools": [],
+    "elapsed_ms": 7,
+    "answer": "원하는 언어와 검토 날짜, 시작·마감 시각을 알려 주세요. 예를 들어 ‘내일 14:00부터 15:00까지 Python 이슈 읽기 계획을 짜줘’라고 요청할 수 있어요. ‘Python 참고 자료’만 따로 조회할 수도 있어요.",
+    "stages": [
+      "analyze",
+      "respond"
+    ]
+  },
+  {
+    "case": "missing_key",
+    "mode": "captured_tools",
+    "message": "어떻게 하지?",
+    "status": "clarify",
+    "replans": 0,
+    "tools": [],
+    "elapsed_ms": 7,
+    "answer": "모델 API 키가 없어 자유 형식 요청을 분류할 수 없습니다. 서버에 GMS_API_KEY 또는 OPENAI_API_KEY를 설정하거나, 언어·날짜·시작과 종료 시각을 직접 입력해 주세요.",
+    "stages": [
+      "analyze",
+      "respond"
+    ]
+  },
+  {
+    "case": "clarify",
+    "mode": "captured_tools",
+    "message": "Python 이슈 읽기 계획을 짜줘",
+    "status": "clarify",
+    "replans": 0,
+    "tools": [],
+    "elapsed_ms": 6,
+    "answer": "검토 날짜, 시작 시각, 마감 시각을(를) 알려 주세요.",
+    "stages": [
+      "analyze",
+      "respond"
+    ]
+  }
+]

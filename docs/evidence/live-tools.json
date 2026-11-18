@@ -1,0 +1,245 @@
+{
+  "captured_at": "2026-11-18T07:24:08.339381+00:00",
+  "calls": [
+    {
+      "name": "search_candidates",
+      "arguments": {
+        "language": "Python",
+        "page": 1
+      },
+      "response": {
+        "ok": true,
+        "data": {
+          "items": [
+            {
+              "id": "saayam-for-all/ai#257",
+              "name": "[P1][MVP] Emergency numbers: record an official source for every country, launch countries first",
+              "url": "https://github.com/saayam-for-all/ai/issues/257"
+            },
+            {
+              "id": "goldener-data/goldener#445",
+              "name": "Add a documentation post for dimensionality-reduction tools",
+              "url": "https://github.com/goldener-data/goldener/issues/445"
+            }
+          ],
+          "page": 1,
+          "has_more": true,
+          "requested_date": "2026-11-18",
+          "observed_date": "2026-11-18",
+          "note": ""
+        }
+      }
+    },
+    {
+      "name": "candidate_detail",
+      "arguments": {
+        "id": "saayam-for-all/ai#257"
+      },
+      "response": {
+        "ok": true,
+        "data": {
+          "id": "saayam-for-all/ai#257",
+          "name": "[P1][MVP] Emergency numbers: record an official source for every country, launch countries first",
+          "url": "https://github.com/saayam-for-all/ai/issues/257",
+          "body_chars": 3230,
+          "comments": 0,
+          "labels": [
+            "documentation",
+            "good first issue",
+            "help wanted"
+          ]
+        }
+      }
+    },
+    {
+      "name": "candidate_detail",
+      "arguments": {
+        "id": "goldener-data/goldener#445"
+      },
+      "response": {
+        "ok": true,
+        "data": {
+          "id": "goldener-data/goldener#445",
+          "name": "Add a documentation post for dimensionality-reduction tools",
+          "url": "https://github.com/goldener-data/goldener/issues/445",
+          "body_chars": 2115,
+          "comments": 0,
+          "labels": [
+            "documentation",
+            "good first issue",
+            "help wanted",
+            "ready"
+          ]
+        }
+      }
+    },
+    {
+      "name": "search_candidates",
+      "arguments": {
+        "language": "Python",
+        "page": 2
+      },
+      "response": {
+        "ok": true,
+        "data": {
+          "items": [
+            {
+              "id": "goldener-data/goldener#444",
+              "name": "Add a documentation post for `GoldClusterizer`",
+              "url": "https://github.com/goldener-data/goldener/issues/444"
+            },
+            {
+              "id": "goldener-data/goldener#443",
+              "name": "In `GoldSelector`, `value` should never be None",
+              "url": "https://github.com/goldener-data/goldener/issues/443"
+            }
+          ],
+          "page": 2,
+          "has_more": true,
+          "requested_date": "2026-11-18",
+          "observed_date": "2026-11-18",
+          "note": ""
+        }
+      }
+    },
+    {
+      "name": "candidate_detail",
+      "arguments": {
+        "id": "goldener-data/goldener#444"
+      },
+      "response": {
+        "ok": true,
+        "data": {
+          "id": "goldener-data/goldener#444",
+          "name": "Add a documentation post for `GoldClusterizer`",
+          "url": "https://github.com/goldener-data/goldener/issues/444",
+          "body_chars": 1795,
+          "comments": 0,
+          "labels": [
+            "documentation",
+            "good first issue",
+            "help wanted",
+            "ready"
+          ]
+        }
+      }
+    },
+    {
+      "name": "candidate_detail",
+      "arguments": {
+        "id": "goldener-data/goldener#443"
+      },
+      "response": {
+        "ok": true,
+        "data": {
+          "id": "goldener-data/goldener#443",
+          "name": "In `GoldSelector`, `value` should never be None",
+          "url": "https://github.com/goldener-data/goldener/issues/443",
+          "body_chars": 578,
+          "comments": 0,
+          "labels": [
+            "enhancement",
+            "good first issue",
+            "help wanted",
+            "ready"
+          ]
+        }
+      }
+    },
+    {
+      "name": "search_candidates",
+      "arguments": {
+        "language": "Python",
+        "page": 3
+      },
+      "response": {
+        "ok": true,
+        "data": {
+          "items": [
+            {
+              "id": "swarmauri/swarmauri-sdk#6308",
+              "name": "Verify GeminiDialogueTTS alpha interface with a live API account",
+              "url": "https://github.com/swarmauri/swarmauri-sdk/issues/6308"
+            },
+            {
+              "id": "elviskahoro/sdk-python-attio#176",
+              "name": "Disable Claude Code attribution in commits and PRs",
+              "url": "https://github.com/elviskahoro/sdk-python-attio/issues/176"
+            }
+          ],
+          "page": 3,
+          "has_more": true,
+          "requested_date": "2026-11-18",
+          "observed_date": "2026-11-18",
+          "note": ""
+        }
+      }
+    },
+    {
+      "name": "candidate_detail",
+      "arguments": {
+        "id": "swarmauri/swarmauri-sdk#6308"
+      },
+      "response": {
+        "ok": true,
+        "data": {
+          "id": "swarmauri/swarmauri-sdk#6308",
+          "name": "Verify GeminiDialogueTTS alpha interface with a live API account",
+          "url": "https://github.com/swarmauri/swarmauri-sdk/issues/6308",
+          "body_chars": 3918,
+          "comments": 0,
+          "labels": [
+            "good first issue"
+          ]
+        }
+      }
+    },
+    {
+      "name": "candidate_detail",
+      "arguments": {
+        "id": "elviskahoro/sdk-python-attio#176"
+      },
+      "response": {
+        "ok": true,
+        "data": {
+          "id": "elviskahoro/sdk-python-attio#176",
+          "name": "Disable Claude Code attribution in commits and PRs",
+          "url": "https://github.com/elviskahoro/sdk-python-attio/issues/176",
+          "body_chars": 511,
+          "comments": 1,
+          "labels": [
+            "enhancement",
+            "good first issue"
+          ]
+        }
+      }
+    },
+    {
+      "name": "search_resources",
+      "arguments": {
+        "language": "Python"
+      },
+      "response": {
+        "ok": true,
+        "data": {
+          "items": [
+            {
+              "name": "What does the \"yield\" keyword do in Python?",
+              "url": "https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python",
+              "author": "Alex. S.",
+              "author_url": "https://stackoverflow.com/users/18300/alex-s",
+              "license": "CC BY-SA 4.0"
+            },
+            {
+              "name": "What does if __name__ == \"__main__\": do?",
+              "url": "https://stackoverflow.com/questions/419163/what-does-if-name-main-do",
+              "author": "Devoted",
+              "author_url": "https://stackoverflow.com/users/51518/devoted",
+              "license": "CC BY-SA 4.0"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

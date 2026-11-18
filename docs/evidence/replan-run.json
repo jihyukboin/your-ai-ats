@@ -1,0 +1,695 @@
+{
+  "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+  "started_at": "2026-11-18T07:49:11.662495+00:00",
+  "message": "2026-11-18 14:00부터 14:10까지 Python 이슈 읽기 계획을 짜줘",
+  "answer": "2026-11-18 14:00~14:07에 In `GoldSelector`, `value` should never be None (goldener-data/goldener#443) 본문 검토를 추천합니다.\n조회한 페이지에서 가용 10분 안에 검토할 수 있는 후보 중 예상 시간이 가장 짧습니다.\n본문 578자 ÷ 분당 300자(올림) + 메모 5분 = 예상 7분. 마감 14:10 기준 늦어도 14:03 시작.\n예상 시간에는 댓글 읽기와 코드 수정이 포함되지 않습니다.\n언어 참고 자료 · What does the \"yield\" keyword do in Python? (Alex. S., CC BY-SA 4.0)\n언어 참고 자료 · What does if __name__ == \"__main__\": do? (Devoted, CC BY-SA 4.0)\n제외 · saayam-for-all/ai#257 · 검토 16분 예상, 가용 10분 초과\n제외 · goldener-data/goldener#445 · 검토 13분 예상, 가용 10분 초과\n제외 · goldener-data/goldener#444 · 검토 11분 예상, 가용 10분 초과",
+  "status": "recommended",
+  "proposal": {
+    "title": "In `GoldSelector`, `value` should never be None",
+    "date": "2026-11-18",
+    "start_time": "14:00",
+    "end_time": "14:07",
+    "notes": "본문 578자 ÷ 분당 300자(올림) + 메모 5분 = 예상 7분. 마감 14:10 기준 늦어도 14:03 시작.",
+    "url": "https://github.com/goldener-data/goldener/issues/443"
+  },
+  "sources": [
+    {
+      "name": "goldener-data/goldener#443",
+      "url": "https://github.com/goldener-data/goldener/issues/443"
+    },
+    {
+      "name": "What does the \"yield\" keyword do in Python?",
+      "url": "https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python",
+      "author": "Alex. S.",
+      "author_url": "https://stackoverflow.com/users/18300/alex-s",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "name": "What does if __name__ == \"__main__\": do?",
+      "url": "https://stackoverflow.com/questions/419163/what-does-if-name-main-do",
+      "author": "Devoted",
+      "author_url": "https://stackoverflow.com/users/51518/devoted",
+      "license": "CC BY-SA 4.0"
+    }
+  ],
+  "events": [
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 1,
+      "at": "2026-11-18T07:49:11.662495+00:00",
+      "type": "chat_started",
+      "stage": "chat",
+      "data": {
+        "message": "2026-11-18 14:00부터 14:10까지 Python 이슈 읽기 계획을 짜줘"
+      }
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 2,
+      "at": "2026-11-18T07:49:11.666197+00:00",
+      "type": "stage_start",
+      "stage": "analyze",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.666191+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 3,
+      "at": "2026-11-18T07:49:11.666534+00:00",
+      "type": "decision",
+      "stage": "analyze",
+      "data": {
+        "method": "rule",
+        "intent": "plan",
+        "reason": "이슈 검토 계획 또는 일정 조건 변경을 요청했습니다.",
+        "selected_tool": null,
+        "changes": {
+          "language": "Python",
+          "date": "2026-11-18",
+          "start_time": "14:00",
+          "end_time": "14:10"
+        }
+      },
+      "timestamp": "2026-11-18T07:49:11.666529+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 4,
+      "at": "2026-11-18T07:49:11.666792+00:00",
+      "type": "stage_end",
+      "stage": "analyze",
+      "data": {
+        "status": "",
+        "intent": "plan",
+        "reason": "이슈 검토 계획 또는 일정 조건 변경을 요청했습니다.",
+        "conditions": {
+          "language": "Python",
+          "date": "2026-11-18",
+          "start_time": "14:00",
+          "end_time": "14:10"
+        }
+      },
+      "timestamp": "2026-11-18T07:49:11.666787+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 5,
+      "at": "2026-11-18T07:49:11.667682+00:00",
+      "type": "stage_start",
+      "stage": "plan",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.667677+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 6,
+      "at": "2026-11-18T07:49:11.667964+00:00",
+      "type": "plan",
+      "stage": "plan",
+      "data": {
+        "tasks": [
+          {
+            "tool": "search_candidates",
+            "args": {
+              "language": "Python",
+              "page": 1,
+              "reference_date": "2026-11-18"
+            }
+          },
+          {
+            "tool": "candidate_detail",
+            "from": "search_candidates.items[].id"
+          },
+          {
+            "tool": "search_resources",
+            "args": {
+              "language": "Python"
+            }
+          }
+        ],
+        "page": 1
+      },
+      "timestamp": "2026-11-18T07:49:11.667958+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 7,
+      "at": "2026-11-18T07:49:11.668218+00:00",
+      "type": "stage_end",
+      "stage": "plan",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.668213+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 8,
+      "at": "2026-11-18T07:49:11.668852+00:00",
+      "type": "stage_start",
+      "stage": "execute",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.668847+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 9,
+      "at": "2026-11-18T07:49:11.669127+00:00",
+      "type": "tool_request",
+      "stage": "execute",
+      "data": {
+        "tool": "search_candidates",
+        "arguments": {
+          "language": "Python",
+          "page": 1,
+          "reference_date": "2026-11-18"
+        }
+      },
+      "timestamp": "2026-11-18T07:49:11.669122+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 10,
+      "at": "2026-11-18T07:49:11.669378+00:00",
+      "type": "tool_response",
+      "stage": "execute",
+      "data": {
+        "tool": "search_candidates",
+        "ok": true,
+        "result": {
+          "ok": true,
+          "data": {
+            "items": [
+              {
+                "id": "saayam-for-all/ai#257",
+                "name": "[P1][MVP] Emergency numbers: record an official source for every country, launch countries first",
+                "url": "https://github.com/saayam-for-all/ai/issues/257"
+              },
+              {
+                "id": "goldener-data/goldener#445",
+                "name": "Add a documentation post for dimensionality-reduction tools",
+                "url": "https://github.com/goldener-data/goldener/issues/445"
+              }
+            ],
+            "page": 1,
+            "has_more": true,
+            "requested_date": "2026-11-18",
+            "observed_date": "2026-11-18",
+            "note": ""
+          }
+        },
+        "duration_ms": 0.02
+      },
+      "timestamp": "2026-11-18T07:49:11.669374+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 11,
+      "at": "2026-11-18T07:49:11.669623+00:00",
+      "type": "tool_request",
+      "stage": "execute",
+      "data": {
+        "tool": "candidate_detail",
+        "arguments": {
+          "id": "saayam-for-all/ai#257"
+        }
+      },
+      "timestamp": "2026-11-18T07:49:11.669619+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 12,
+      "at": "2026-11-18T07:49:11.669852+00:00",
+      "type": "tool_response",
+      "stage": "execute",
+      "data": {
+        "tool": "candidate_detail",
+        "ok": true,
+        "result": {
+          "ok": true,
+          "data": {
+            "id": "saayam-for-all/ai#257",
+            "name": "[P1][MVP] Emergency numbers: record an official source for every country, launch countries first",
+            "url": "https://github.com/saayam-for-all/ai/issues/257",
+            "body_chars": 3230,
+            "comments": 0,
+            "labels": [
+              "documentation",
+              "good first issue",
+              "help wanted"
+            ]
+          }
+        },
+        "duration_ms": 0.01
+      },
+      "timestamp": "2026-11-18T07:49:11.669848+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 13,
+      "at": "2026-11-18T07:49:11.670081+00:00",
+      "type": "tool_request",
+      "stage": "execute",
+      "data": {
+        "tool": "candidate_detail",
+        "arguments": {
+          "id": "goldener-data/goldener#445"
+        }
+      },
+      "timestamp": "2026-11-18T07:49:11.670077+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 14,
+      "at": "2026-11-18T07:49:11.670311+00:00",
+      "type": "tool_response",
+      "stage": "execute",
+      "data": {
+        "tool": "candidate_detail",
+        "ok": true,
+        "result": {
+          "ok": true,
+          "data": {
+            "id": "goldener-data/goldener#445",
+            "name": "Add a documentation post for dimensionality-reduction tools",
+            "url": "https://github.com/goldener-data/goldener/issues/445",
+            "body_chars": 2115,
+            "comments": 0,
+            "labels": [
+              "documentation",
+              "good first issue",
+              "help wanted",
+              "ready"
+            ]
+          }
+        },
+        "duration_ms": 0.01
+      },
+      "timestamp": "2026-11-18T07:49:11.670307+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 15,
+      "at": "2026-11-18T07:49:11.670548+00:00",
+      "type": "tool_request",
+      "stage": "execute",
+      "data": {
+        "tool": "search_resources",
+        "arguments": {
+          "language": "Python"
+        }
+      },
+      "timestamp": "2026-11-18T07:49:11.670544+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 16,
+      "at": "2026-11-18T07:49:11.670781+00:00",
+      "type": "tool_response",
+      "stage": "execute",
+      "data": {
+        "tool": "search_resources",
+        "ok": true,
+        "result": {
+          "ok": true,
+          "data": {
+            "items": [
+              {
+                "name": "What does the \"yield\" keyword do in Python?",
+                "url": "https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python",
+                "author": "Alex. S.",
+                "author_url": "https://stackoverflow.com/users/18300/alex-s",
+                "license": "CC BY-SA 4.0"
+              },
+              {
+                "name": "What does if __name__ == \"__main__\": do?",
+                "url": "https://stackoverflow.com/questions/419163/what-does-if-name-main-do",
+                "author": "Devoted",
+                "author_url": "https://stackoverflow.com/users/51518/devoted",
+                "license": "CC BY-SA 4.0"
+              }
+            ]
+          }
+        },
+        "duration_ms": 0.01
+      },
+      "timestamp": "2026-11-18T07:49:11.670777+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 17,
+      "at": "2026-11-18T07:49:11.671026+00:00",
+      "type": "stage_end",
+      "stage": "execute",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.671021+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 18,
+      "at": "2026-11-18T07:49:11.671521+00:00",
+      "type": "stage_start",
+      "stage": "judge",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.671516+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 19,
+      "at": "2026-11-18T07:49:11.671784+00:00",
+      "type": "replan",
+      "stage": "judge",
+      "data": {
+        "reason": "현재 페이지에 조건을 만족하는 후보가 없어 같은 언어의 다음 페이지를 확인합니다.",
+        "from_page": 1,
+        "to_page": 2,
+        "count": 1,
+        "limit": 2
+      },
+      "timestamp": "2026-11-18T07:49:11.671779+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 20,
+      "at": "2026-11-18T07:49:11.672058+00:00",
+      "type": "stage_end",
+      "stage": "judge",
+      "data": {
+        "reason": "현재 페이지에 조건을 만족하는 후보가 없어 같은 언어의 다음 페이지를 확인합니다.",
+        "retry": true
+      },
+      "timestamp": "2026-11-18T07:49:11.672053+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 21,
+      "at": "2026-11-18T07:49:11.672863+00:00",
+      "type": "stage_start",
+      "stage": "plan",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.672859+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 22,
+      "at": "2026-11-18T07:49:11.673124+00:00",
+      "type": "plan",
+      "stage": "plan",
+      "data": {
+        "tasks": [
+          {
+            "tool": "search_candidates",
+            "args": {
+              "language": "Python",
+              "page": 2,
+              "reference_date": "2026-11-18"
+            }
+          },
+          {
+            "tool": "candidate_detail",
+            "from": "search_candidates.items[].id"
+          }
+        ],
+        "page": 2
+      },
+      "timestamp": "2026-11-18T07:49:11.673119+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 23,
+      "at": "2026-11-18T07:49:11.673365+00:00",
+      "type": "stage_end",
+      "stage": "plan",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.673360+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 24,
+      "at": "2026-11-18T07:49:11.673853+00:00",
+      "type": "stage_start",
+      "stage": "execute",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.673849+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 25,
+      "at": "2026-11-18T07:49:11.674087+00:00",
+      "type": "tool_request",
+      "stage": "execute",
+      "data": {
+        "tool": "search_candidates",
+        "arguments": {
+          "language": "Python",
+          "page": 2,
+          "reference_date": "2026-11-18"
+        }
+      },
+      "timestamp": "2026-11-18T07:49:11.674083+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 26,
+      "at": "2026-11-18T07:49:11.674322+00:00",
+      "type": "tool_response",
+      "stage": "execute",
+      "data": {
+        "tool": "search_candidates",
+        "ok": true,
+        "result": {
+          "ok": true,
+          "data": {
+            "items": [
+              {
+                "id": "goldener-data/goldener#444",
+                "name": "Add a documentation post for `GoldClusterizer`",
+                "url": "https://github.com/goldener-data/goldener/issues/444"
+              },
+              {
+                "id": "goldener-data/goldener#443",
+                "name": "In `GoldSelector`, `value` should never be None",
+                "url": "https://github.com/goldener-data/goldener/issues/443"
+              }
+            ],
+            "page": 2,
+            "has_more": true,
+            "requested_date": "2026-11-18",
+            "observed_date": "2026-11-18",
+            "note": ""
+          }
+        },
+        "duration_ms": 0.02
+      },
+      "timestamp": "2026-11-18T07:49:11.674318+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 27,
+      "at": "2026-11-18T07:49:11.674585+00:00",
+      "type": "tool_request",
+      "stage": "execute",
+      "data": {
+        "tool": "candidate_detail",
+        "arguments": {
+          "id": "goldener-data/goldener#444"
+        }
+      },
+      "timestamp": "2026-11-18T07:49:11.674580+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 28,
+      "at": "2026-11-18T07:49:11.674825+00:00",
+      "type": "tool_response",
+      "stage": "execute",
+      "data": {
+        "tool": "candidate_detail",
+        "ok": true,
+        "result": {
+          "ok": true,
+          "data": {
+            "id": "goldener-data/goldener#444",
+            "name": "Add a documentation post for `GoldClusterizer`",
+            "url": "https://github.com/goldener-data/goldener/issues/444",
+            "body_chars": 1795,
+            "comments": 0,
+            "labels": [
+              "documentation",
+              "good first issue",
+              "help wanted",
+              "ready"
+            ]
+          }
+        },
+        "duration_ms": 0.01
+      },
+      "timestamp": "2026-11-18T07:49:11.674820+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 29,
+      "at": "2026-11-18T07:49:11.675071+00:00",
+      "type": "tool_request",
+      "stage": "execute",
+      "data": {
+        "tool": "candidate_detail",
+        "arguments": {
+          "id": "goldener-data/goldener#443"
+        }
+      },
+      "timestamp": "2026-11-18T07:49:11.675067+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 30,
+      "at": "2026-11-18T07:49:11.675299+00:00",
+      "type": "tool_response",
+      "stage": "execute",
+      "data": {
+        "tool": "candidate_detail",
+        "ok": true,
+        "result": {
+          "ok": true,
+          "data": {
+            "id": "goldener-data/goldener#443",
+            "name": "In `GoldSelector`, `value` should never be None",
+            "url": "https://github.com/goldener-data/goldener/issues/443",
+            "body_chars": 578,
+            "comments": 0,
+            "labels": [
+              "enhancement",
+              "good first issue",
+              "help wanted",
+              "ready"
+            ]
+          }
+        },
+        "duration_ms": 0.01
+      },
+      "timestamp": "2026-11-18T07:49:11.675294+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 31,
+      "at": "2026-11-18T07:49:11.675522+00:00",
+      "type": "stage_end",
+      "stage": "execute",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.675518+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 32,
+      "at": "2026-11-18T07:49:11.676025+00:00",
+      "type": "stage_start",
+      "stage": "judge",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.676021+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 33,
+      "at": "2026-11-18T07:49:11.676286+00:00",
+      "type": "stage_end",
+      "stage": "judge",
+      "data": {
+        "status": "recommended",
+        "reason": "조회한 페이지에서 가용 10분 안에 검토할 수 있는 후보 중 예상 시간이 가장 짧습니다.",
+        "retry": false
+      },
+      "timestamp": "2026-11-18T07:49:11.676281+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 34,
+      "at": "2026-11-18T07:49:11.677220+00:00",
+      "type": "stage_start",
+      "stage": "respond",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.677216+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 35,
+      "at": "2026-11-18T07:49:11.677512+00:00",
+      "type": "stage_end",
+      "stage": "respond",
+      "data": {},
+      "timestamp": "2026-11-18T07:49:11.677507+00:00"
+    },
+    {
+      "session_id": "replan",
+      "run_id": "29c61994-8d1a-4f10-bf60-b542a0613327",
+      "seq": 36,
+      "at": "2026-11-18T07:49:11.678174+00:00",
+      "type": "chat_completed",
+      "stage": "chat",
+      "data": {
+        "answer": "2026-11-18 14:00~14:07에 In `GoldSelector`, `value` should never be None (goldener-data/goldener#443) 본문 검토를 추천합니다.\n조회한 페이지에서 가용 10분 안에 검토할 수 있는 후보 중 예상 시간이 가장 짧습니다.\n본문 578자 ÷ 분당 300자(올림) + 메모 5분 = 예상 7분. 마감 14:10 기준 늦어도 14:03 시작.\n예상 시간에는 댓글 읽기와 코드 수정이 포함되지 않습니다.\n언어 참고 자료 · What does the \"yield\" keyword do in Python? (Alex. S., CC BY-SA 4.0)\n언어 참고 자료 · What does if __name__ == \"__main__\": do? (Devoted, CC BY-SA 4.0)\n제외 · saayam-for-all/ai#257 · 검토 16분 예상, 가용 10분 초과\n제외 · goldener-data/goldener#445 · 검토 13분 예상, 가용 10분 초과\n제외 · goldener-data/goldener#444 · 검토 11분 예상, 가용 10분 초과",
+        "status": "recommended",
+        "proposal": {
+          "title": "In `GoldSelector`, `value` should never be None",
+          "date": "2026-11-18",
+          "start_time": "14:00",
+          "end_time": "14:07",
+          "url": "https://github.com/goldener-data/goldener/issues/443",
+          "notes": "본문 578자 ÷ 분당 300자(올림) + 메모 5분 = 예상 7분. 마감 14:10 기준 늦어도 14:03 시작."
+        },
+        "sources": [
+          {
+            "name": "goldener-data/goldener#443",
+            "url": "https://github.com/goldener-data/goldener/issues/443"
+          },
+          {
+            "name": "What does the \"yield\" keyword do in Python?",
+            "url": "https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python",
+            "author": "Alex. S.",
+            "author_url": "https://stackoverflow.com/users/18300/alex-s",
+            "license": "CC BY-SA 4.0"
+          },
+          {
+            "name": "What does if __name__ == \"__main__\": do?",
+            "url": "https://stackoverflow.com/questions/419163/what-does-if-name-main-do",
+            "author": "Devoted",
+            "author_url": "https://stackoverflow.com/users/51518/devoted",
+            "license": "CC BY-SA 4.0"
+          }
+        ]
+      }
+    }
+  ]
+}

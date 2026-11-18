@@ -1,0 +1,427 @@
+{
+  "case": "live",
+  "mode": "live_providers",
+  "message": "내일 14:00부터 15:00까지 Python 이슈 읽기 계획을 짜줘",
+  "status": "recommended",
+  "replans": 0,
+  "tools": [
+    "search_candidates",
+    "candidate_detail",
+    "candidate_detail",
+    "search_resources"
+  ],
+  "elapsed_ms": 1348,
+  "answer": "2026-11-19 14:00~14:14에 Correct outdated README clustering API examples and verify all examples and links (goldener-data/goldener#448) 본문 검토를 추천합니다.\n조회한 페이지에서 가용 60분 안에 검토할 수 있는 후보 중 예상 시간이 가장 짧습니다.\n본문 2409자 ÷ 분당 300자(올림) + 메모 5분 = 예상 14분. 마감 15:00 기준 늦어도 14:46 시작.\n예상 시간에는 댓글 읽기와 코드 수정이 포함되지 않습니다.\n언어 참고 자료 · What does the \"yield\" keyword do in Python? (Alex. S., CC BY-SA 4.0)\n언어 참고 자료 · What does if __name__ == \"__main__\": do? (Devoted, CC BY-SA 4.0)\n요청 기준일 2026-11-19의 상태는 확인할 수 없어 2026-11-18 조회 시점의 열린 이슈를 사용했습니다.",
+  "events": [
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 1,
+      "at": "2026-11-18T07:40:11.565179+00:00",
+      "type": "chat_started",
+      "stage": "chat",
+      "data": {
+        "message": "내일 14:00부터 15:00까지 Python 이슈 읽기 계획을 짜줘"
+      }
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 2,
+      "at": "2026-11-18T07:40:11.568601+00:00",
+      "type": "stage_start",
+      "stage": "analyze",
+      "data": {},
+      "timestamp": "2026-11-18T07:40:11.568596+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 3,
+      "at": "2026-11-18T07:40:11.568912+00:00",
+      "type": "decision",
+      "stage": "analyze",
+      "data": {
+        "method": "rule",
+        "intent": "plan",
+        "reason": "이슈 검토 계획 또는 일정 조건 변경을 요청했습니다.",
+        "selected_tool": null,
+        "changes": {
+          "language": "Python",
+          "date": "2026-11-19",
+          "start_time": "14:00",
+          "end_time": "15:00"
+        }
+      },
+      "timestamp": "2026-11-18T07:40:11.568908+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 4,
+      "at": "2026-11-18T07:40:11.569163+00:00",
+      "type": "stage_end",
+      "stage": "analyze",
+      "data": {
+        "status": "",
+        "intent": "plan",
+        "reason": "이슈 검토 계획 또는 일정 조건 변경을 요청했습니다.",
+        "conditions": {
+          "language": "Python",
+          "date": "2026-11-19",
+          "start_time": "14:00",
+          "end_time": "15:00"
+        }
+      },
+      "timestamp": "2026-11-18T07:40:11.569158+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 5,
+      "at": "2026-11-18T07:40:11.570052+00:00",
+      "type": "stage_start",
+      "stage": "plan",
+      "data": {},
+      "timestamp": "2026-11-18T07:40:11.570047+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 6,
+      "at": "2026-11-18T07:40:11.570313+00:00",
+      "type": "plan",
+      "stage": "plan",
+      "data": {
+        "tasks": [
+          {
+            "tool": "search_candidates",
+            "args": {
+              "language": "Python",
+              "page": 1,
+              "reference_date": "2026-11-19"
+            }
+          },
+          {
+            "tool": "candidate_detail",
+            "from": "search_candidates.items[].id"
+          },
+          {
+            "tool": "search_resources",
+            "args": {
+              "language": "Python"
+            }
+          }
+        ],
+        "page": 1
+      },
+      "timestamp": "2026-11-18T07:40:11.570308+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 7,
+      "at": "2026-11-18T07:40:11.570560+00:00",
+      "type": "stage_end",
+      "stage": "plan",
+      "data": {},
+      "timestamp": "2026-11-18T07:40:11.570555+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 8,
+      "at": "2026-11-18T07:40:11.571071+00:00",
+      "type": "stage_start",
+      "stage": "execute",
+      "data": {},
+      "timestamp": "2026-11-18T07:40:11.571067+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 9,
+      "at": "2026-11-18T07:40:11.571316+00:00",
+      "type": "tool_request",
+      "stage": "execute",
+      "data": {
+        "tool": "search_candidates",
+        "arguments": {
+          "language": "Python",
+          "page": 1,
+          "reference_date": "2026-11-19"
+        }
+      },
+      "timestamp": "2026-11-18T07:40:11.571311+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 10,
+      "at": "2026-11-18T07:40:12.034465+00:00",
+      "type": "tool_response",
+      "stage": "execute",
+      "data": {
+        "tool": "search_candidates",
+        "ok": true,
+        "result": {
+          "ok": true,
+          "data": {
+            "items": [
+              {
+                "id": "goldener-data/goldener#448",
+                "name": "Correct outdated README clustering API examples and verify all examples and links",
+                "url": "https://github.com/goldener-data/goldener/issues/448"
+              },
+              {
+                "id": "saayam-for-all/ai#257",
+                "name": "[P1][MVP] Emergency numbers: record an official source for every country, launch countries first",
+                "url": "https://github.com/saayam-for-all/ai/issues/257"
+              }
+            ],
+            "page": 1,
+            "has_more": true,
+            "requested_date": "2026-11-19",
+            "observed_date": "2026-11-18",
+            "note": "요청 기준일 2026-11-19의 상태는 확인할 수 없어 2026-11-18 조회 시점의 열린 이슈를 사용했습니다."
+          }
+        },
+        "duration_ms": 462.87
+      },
+      "timestamp": "2026-11-18T07:40:12.034457+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 11,
+      "at": "2026-11-18T07:40:12.034927+00:00",
+      "type": "tool_request",
+      "stage": "execute",
+      "data": {
+        "tool": "candidate_detail",
+        "arguments": {
+          "id": "goldener-data/goldener#448"
+        }
+      },
+      "timestamp": "2026-11-18T07:40:12.034921+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 12,
+      "at": "2026-11-18T07:40:12.334817+00:00",
+      "type": "tool_response",
+      "stage": "execute",
+      "data": {
+        "tool": "candidate_detail",
+        "ok": true,
+        "result": {
+          "ok": true,
+          "data": {
+            "id": "goldener-data/goldener#448",
+            "name": "Correct outdated README clustering API examples and verify all examples and links",
+            "url": "https://github.com/goldener-data/goldener/issues/448",
+            "body_chars": 2409,
+            "comments": 0,
+            "labels": [
+              "documentation",
+              "good first issue",
+              "help wanted",
+              "ready"
+            ]
+          }
+        },
+        "duration_ms": 299.65
+      },
+      "timestamp": "2026-11-18T07:40:12.334807+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 13,
+      "at": "2026-11-18T07:40:12.335246+00:00",
+      "type": "tool_request",
+      "stage": "execute",
+      "data": {
+        "tool": "candidate_detail",
+        "arguments": {
+          "id": "saayam-for-all/ai#257"
+        }
+      },
+      "timestamp": "2026-11-18T07:40:12.335242+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 14,
+      "at": "2026-11-18T07:40:12.667972+00:00",
+      "type": "tool_response",
+      "stage": "execute",
+      "data": {
+        "tool": "candidate_detail",
+        "ok": true,
+        "result": {
+          "ok": true,
+          "data": {
+            "id": "saayam-for-all/ai#257",
+            "name": "[P1][MVP] Emergency numbers: record an official source for every country, launch countries first",
+            "url": "https://github.com/saayam-for-all/ai/issues/257",
+            "body_chars": 3230,
+            "comments": 0,
+            "labels": [
+              "documentation",
+              "good first issue",
+              "help wanted"
+            ]
+          }
+        },
+        "duration_ms": 332.44
+      },
+      "timestamp": "2026-11-18T07:40:12.667961+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 15,
+      "at": "2026-11-18T07:40:12.668425+00:00",
+      "type": "tool_request",
+      "stage": "execute",
+      "data": {
+        "tool": "search_resources",
+        "arguments": {
+          "language": "Python"
+        }
+      },
+      "timestamp": "2026-11-18T07:40:12.668420+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 16,
+      "at": "2026-11-18T07:40:12.908710+00:00",
+      "type": "tool_response",
+      "stage": "execute",
+      "data": {
+        "tool": "search_resources",
+        "ok": true,
+        "result": {
+          "ok": true,
+          "data": {
+            "items": [
+              {
+                "name": "What does the \"yield\" keyword do in Python?",
+                "url": "https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python",
+                "author": "Alex. S.",
+                "author_url": "https://stackoverflow.com/users/18300/alex-s",
+                "license": "CC BY-SA 4.0"
+              },
+              {
+                "name": "What does if __name__ == \"__main__\": do?",
+                "url": "https://stackoverflow.com/questions/419163/what-does-if-name-main-do",
+                "author": "Devoted",
+                "author_url": "https://stackoverflow.com/users/51518/devoted",
+                "license": "CC BY-SA 4.0"
+              }
+            ]
+          }
+        },
+        "duration_ms": 240.02
+      },
+      "timestamp": "2026-11-18T07:40:12.908699+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 17,
+      "at": "2026-11-18T07:40:12.909140+00:00",
+      "type": "stage_end",
+      "stage": "execute",
+      "data": {},
+      "timestamp": "2026-11-18T07:40:12.909134+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 18,
+      "at": "2026-11-18T07:40:12.909900+00:00",
+      "type": "stage_start",
+      "stage": "judge",
+      "data": {},
+      "timestamp": "2026-11-18T07:40:12.909895+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 19,
+      "at": "2026-11-18T07:40:12.910168+00:00",
+      "type": "stage_end",
+      "stage": "judge",
+      "data": {
+        "status": "recommended",
+        "reason": "조회한 페이지에서 가용 60분 안에 검토할 수 있는 후보 중 예상 시간이 가장 짧습니다.",
+        "retry": false
+      },
+      "timestamp": "2026-11-18T07:40:12.910163+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 20,
+      "at": "2026-11-18T07:40:12.910962+00:00",
+      "type": "stage_start",
+      "stage": "respond",
+      "data": {},
+      "timestamp": "2026-11-18T07:40:12.910958+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 21,
+      "at": "2026-11-18T07:40:12.911208+00:00",
+      "type": "stage_end",
+      "stage": "respond",
+      "data": {},
+      "timestamp": "2026-11-18T07:40:12.911202+00:00"
+    },
+    {
+      "session_id": "live",
+      "run_id": "09bc1680-339a-49e3-bc8e-37e3b0cd7089",
+      "seq": 22,
+      "at": "2026-11-18T07:40:12.911942+00:00",
+      "type": "chat_completed",
+      "stage": "chat",
+      "data": {
+        "answer": "2026-11-19 14:00~14:14에 Correct outdated README clustering API examples and verify all examples and links (goldener-data/goldener#448) 본문 검토를 추천합니다.\n조회한 페이지에서 가용 60분 안에 검토할 수 있는 후보 중 예상 시간이 가장 짧습니다.\n본문 2409자 ÷ 분당 300자(올림) + 메모 5분 = 예상 14분. 마감 15:00 기준 늦어도 14:46 시작.\n예상 시간에는 댓글 읽기와 코드 수정이 포함되지 않습니다.\n언어 참고 자료 · What does the \"yield\" keyword do in Python? (Alex. S., CC BY-SA 4.0)\n언어 참고 자료 · What does if __name__ == \"__main__\": do? (Devoted, CC BY-SA 4.0)\n요청 기준일 2026-11-19의 상태는 확인할 수 없어 2026-11-18 조회 시점의 열린 이슈를 사용했습니다.",
+        "status": "recommended",
+        "proposal": {
+          "title": "Correct outdated README clustering API examples and verify all examples and links",
+          "date": "2026-11-19",
+          "start_time": "14:00",
+          "end_time": "14:14",
+          "url": "https://github.com/goldener-data/goldener/issues/448",
+          "notes": "본문 2409자 ÷ 분당 300자(올림) + 메모 5분 = 예상 14분. 마감 15:00 기준 늦어도 14:46 시작."
+        },
+        "sources": [
+          {
+            "name": "goldener-data/goldener#448",
+            "url": "https://github.com/goldener-data/goldener/issues/448"
+          },
+          {
+            "name": "What does the \"yield\" keyword do in Python?",
+            "url": "https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python",
+            "author": "Alex. S.",
+            "author_url": "https://stackoverflow.com/users/18300/alex-s",
+            "license": "CC BY-SA 4.0"
+          },
+          {
+            "name": "What does if __name__ == \"__main__\": do?",
+            "url": "https://stackoverflow.com/questions/419163/what-does-if-name-main-do",
+            "author": "Devoted",
+            "author_url": "https://stackoverflow.com/users/51518/devoted",
+            "license": "CC BY-SA 4.0"
+          }
+        ]
+      }
+    }
+  ]
+}

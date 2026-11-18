@@ -1,0 +1,527 @@
+{
+  "captured_at": "2026-11-18T07:33:20.929351+00:00",
+  "tools": [
+    {
+      "name": "search_candidates",
+      "kind": "external_api",
+      "description": "선호 언어로 현재 열린 입문용 이슈 후보를 찾거나 다음 페이지에서 대안을 찾을 때 사용합니다.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "language": {
+            "maxLength": 32,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z][a-zA-Z0-9+#.\\-]*$",
+            "title": "Language",
+            "type": "string"
+          },
+          "page": {
+            "default": 1,
+            "maximum": 500,
+            "minimum": 1,
+            "title": "Page",
+            "type": "integer"
+          },
+          "reference_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Reference Date"
+          }
+        },
+        "required": [
+          "language"
+        ],
+        "title": "Search",
+        "type": "object"
+      },
+      "output_schema": {
+        "$defs": {
+          "Candidate": {
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              },
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "url": {
+                "title": "Url",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "url"
+            ],
+            "title": "Candidate",
+            "type": "object"
+          },
+          "CandidatePage": {
+            "properties": {
+              "items": {
+                "items": {
+                  "$ref": "#/$defs/Candidate"
+                },
+                "title": "Items",
+                "type": "array"
+              },
+              "page": {
+                "title": "Page",
+                "type": "integer"
+              },
+              "has_more": {
+                "title": "Has More",
+                "type": "boolean"
+              },
+              "requested_date": {
+                "title": "Requested Date",
+                "type": "string"
+              },
+              "observed_date": {
+                "title": "Observed Date",
+                "type": "string"
+              },
+              "note": {
+                "title": "Note",
+                "type": "string"
+              }
+            },
+            "required": [
+              "items",
+              "page",
+              "has_more",
+              "requested_date",
+              "observed_date",
+              "note"
+            ],
+            "title": "CandidatePage",
+            "type": "object"
+          },
+          "ErrorDetails": {
+            "properties": {
+              "code": {
+                "title": "Code",
+                "type": "string"
+              },
+              "message": {
+                "title": "Message",
+                "type": "string"
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ],
+            "title": "ErrorDetails",
+            "type": "object"
+          },
+          "Failure": {
+            "properties": {
+              "ok": {
+                "const": false,
+                "title": "Ok",
+                "type": "boolean"
+              },
+              "error": {
+                "$ref": "#/$defs/ErrorDetails"
+              }
+            },
+            "required": [
+              "ok",
+              "error"
+            ],
+            "title": "Failure",
+            "type": "object"
+          },
+          "Success_CandidatePage_": {
+            "properties": {
+              "ok": {
+                "const": true,
+                "title": "Ok",
+                "type": "boolean"
+              },
+              "data": {
+                "$ref": "#/$defs/CandidatePage"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "title": "Success[CandidatePage]",
+            "type": "object"
+          }
+        },
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Success_CandidatePage_"
+          },
+          {
+            "$ref": "#/$defs/Failure"
+          }
+        ]
+      }
+    },
+    {
+      "name": "candidate_detail",
+      "kind": "external_api",
+      "description": "선택한 이슈의 검토 시간을 계산하기 위해 본문 길이, 댓글 수와 라벨이 필요할 때 사용합니다.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "maxLength": 180,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9-]*/[A-Za-z0-9_.-]+#[1-9][0-9]{0,9}$",
+            "title": "Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "title": "IssueId",
+        "type": "object"
+      },
+      "output_schema": {
+        "$defs": {
+          "ErrorDetails": {
+            "properties": {
+              "code": {
+                "title": "Code",
+                "type": "string"
+              },
+              "message": {
+                "title": "Message",
+                "type": "string"
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ],
+            "title": "ErrorDetails",
+            "type": "object"
+          },
+          "Failure": {
+            "properties": {
+              "ok": {
+                "const": false,
+                "title": "Ok",
+                "type": "boolean"
+              },
+              "error": {
+                "$ref": "#/$defs/ErrorDetails"
+              }
+            },
+            "required": [
+              "ok",
+              "error"
+            ],
+            "title": "Failure",
+            "type": "object"
+          },
+          "Issue": {
+            "properties": {
+              "id": {
+                "title": "Id",
+                "type": "string"
+              },
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "url": {
+                "title": "Url",
+                "type": "string"
+              },
+              "body_chars": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body Chars"
+              },
+              "comments": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Comments"
+              },
+              "labels": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Labels",
+                "type": "array"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "url",
+              "body_chars",
+              "comments",
+              "labels"
+            ],
+            "title": "Issue",
+            "type": "object"
+          },
+          "Success_Issue_": {
+            "properties": {
+              "ok": {
+                "const": true,
+                "title": "Ok",
+                "type": "boolean"
+              },
+              "data": {
+                "$ref": "#/$defs/Issue"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "title": "Success[Issue]",
+            "type": "object"
+          }
+        },
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Success_Issue_"
+          },
+          {
+            "$ref": "#/$defs/Failure"
+          }
+        ]
+      }
+    },
+    {
+      "name": "search_resources",
+      "kind": "external_api",
+      "description": "선호 언어를 공부할 때 참고할 Stack Overflow 질문과 원문 출처가 필요할 때 사용합니다.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "language": {
+            "maxLength": 32,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z][a-zA-Z0-9+#.\\-]*$",
+            "title": "Language",
+            "type": "string"
+          }
+        },
+        "required": [
+          "language"
+        ],
+        "title": "Topic",
+        "type": "object"
+      },
+      "output_schema": {
+        "$defs": {
+          "ErrorDetails": {
+            "properties": {
+              "code": {
+                "title": "Code",
+                "type": "string"
+              },
+              "message": {
+                "title": "Message",
+                "type": "string"
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ],
+            "title": "ErrorDetails",
+            "type": "object"
+          },
+          "Failure": {
+            "properties": {
+              "ok": {
+                "const": false,
+                "title": "Ok",
+                "type": "boolean"
+              },
+              "error": {
+                "$ref": "#/$defs/ErrorDetails"
+              }
+            },
+            "required": [
+              "ok",
+              "error"
+            ],
+            "title": "Failure",
+            "type": "object"
+          },
+          "Resource": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "url": {
+                "title": "Url",
+                "type": "string"
+              },
+              "author": {
+                "title": "Author",
+                "type": "string"
+              },
+              "author_url": {
+                "title": "Author Url",
+                "type": "string"
+              },
+              "license": {
+                "title": "License",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "url",
+              "author",
+              "author_url",
+              "license"
+            ],
+            "title": "Resource",
+            "type": "object"
+          },
+          "Resources": {
+            "properties": {
+              "items": {
+                "items": {
+                  "$ref": "#/$defs/Resource"
+                },
+                "title": "Items",
+                "type": "array"
+              }
+            },
+            "required": [
+              "items"
+            ],
+            "title": "Resources",
+            "type": "object"
+          },
+          "Success_Resources_": {
+            "properties": {
+              "ok": {
+                "const": true,
+                "title": "Ok",
+                "type": "boolean"
+              },
+              "data": {
+                "$ref": "#/$defs/Resources"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "title": "Success[Resources]",
+            "type": "object"
+          }
+        },
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Success_Resources_"
+          },
+          {
+            "$ref": "#/$defs/Failure"
+          }
+        ]
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "search_candidates",
+      "arguments": {
+        "language": "Python",
+        "reference_date": "2099-01-01"
+      },
+      "response": {
+        "ok": true,
+        "data": {
+          "items": [
+            {
+              "id": "goldener-data/goldener#448",
+              "name": "Correct outdated README clustering API examples and verify all examples and links",
+              "url": "https://github.com/goldener-data/goldener/issues/448"
+            },
+            {
+              "id": "saayam-for-all/ai#257",
+              "name": "[P1][MVP] Emergency numbers: record an official source for every country, launch countries first",
+              "url": "https://github.com/saayam-for-all/ai/issues/257"
+            }
+          ],
+          "page": 1,
+          "has_more": true,
+          "requested_date": "2099-01-01",
+          "observed_date": "2026-11-18",
+          "note": "요청 기준일 2099-01-01의 상태는 확인할 수 없어 2026-11-18 조회 시점의 열린 이슈를 사용했습니다."
+        }
+      }
+    },
+    {
+      "name": "search_candidates",
+      "arguments": {
+        "language": "Python",
+        "page": 0
+      },
+      "response": {
+        "ok": false,
+        "error": {
+          "code": "INVALID_INPUT",
+          "message": "도구 입력값을 확인하세요."
+        }
+      }
+    },
+    {
+      "name": "candidate_detail",
+      "arguments": {
+        "id": "octocat/Hello-World#999999999"
+      },
+      "response": {
+        "ok": false,
+        "error": {
+          "code": "NOT_FOUND",
+          "message": "원본 항목이 없거나 공개되지 않았습니다."
+        }
+      }
+    },
+    {
+      "name": "search_resources",
+      "arguments": {
+        "language": "no-such-tag-ssafy-v3"
+      },
+      "response": {
+        "ok": false,
+        "error": {
+          "code": "NO_RESULT",
+          "message": "이 언어 태그로 제공되는 Stack Overflow 참고 질문이 없습니다."
+        }
+      }
+    }
+  ]
+}
